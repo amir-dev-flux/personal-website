@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Website</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+        <div class="sidebar-header">
+          <h1 class="brand">Amir</h1>
+          <button
+            class="close-sidebar"
+            id="closeSidebar"
+            aria-label="Close sidebar"
+            type="button"
+          >
+            ✕
+          </button>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-item active" data-section="contact" type="button">
+            Contact
+          </button>
+          <button class="nav-item" data-section="about" type="button">About</button>
+          <button class="nav-item" data-section="projects" type="button">
+            Projects
+          </button>
+        </nav>
+      </aside>
+
+      <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+      <main class="main" id="mainContent">
+        <header class="main-header">
+          <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open sidebar"
+            type="button"
+          >
+            ☰
+          </button>
+          <h2 id="sectionTitle">Contact</h2>
+        </header>
+
+        <section class="chat-shell" aria-live="polite" aria-label="Section messages">
+          <div class="chat-thread" id="chatThread"></div>
+        </section>
+
+        <footer class="fake-input-bar" aria-label="Simulated input area">
+          <input
+            id="fakeInput"
+            class="fake-input"
+            type="text"
+            placeholder="Message Amir..."
+            readonly
+            aria-readonly="true"
+          />
+          <button class="fake-send" type="button" aria-label="Send" disabled>➤</button>
+        </footer>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
