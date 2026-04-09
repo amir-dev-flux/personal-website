@@ -6,71 +6,13 @@ const closeSidebar = document.getElementById('closeSidebar');
 const chatThread = document.getElementById('chatThread');
 const chatShell = document.querySelector('.chat-shell');
 const sidebarBackdrop = document.getElementById('sidebarBackdrop');
-const fakeInput = document.getElementById('fakeInput');
 
-const sectionData = {
-  contact: {
-    messages: ["Hey — I’m Amir. If you want to build something that ships, reach me at your@email.com."],
-    options: [
-      {
-        label: 'Hire me',
-        response:
-          "Great call — I turn ideas into usable products fast. Share your scope and timeline, and I’ll send a clear plan.",
-      },
-      {
-        label: 'See my work',
-        response:
-          'Absolutely. I can walk you through the work that delivered real outcomes — not just polished demos.',
-      },
-      {
-        label: 'Ask about skills',
-        response:
-          'My strengths are AI product engineering, clean front-end architecture, reliable APIs, and production-ready deployment.',
-      },
-    ],
-  },
-  about: {
-    messages: [
-      "I build systems that actually work — not projects that disappear on GitHub.",
-    ],
-    options: [
-      {
-        label: 'Current focus',
-        response:
-          'Right now, I’m focused on production-grade AI assistants and automation that saves real time.',
-      },
-      {
-        label: 'Learning goals',
-        response:
-          'I’m sharpening LLM evaluation, backend reliability, and cloud deployment so what I build scales with confidence.',
-      },
-      {
-        label: 'Collaboration style',
-        response:
-          'I work with high clarity, fast feedback loops, and early shipping so momentum never stalls.',
-      },
-    ],
-  },
-  projects: {
-    messages: ['Project 1: AI Career Coach — a practical guide that turns career goals into action.', 'More high-impact builds are on the way.'],
-    options: [
-      {
-        label: 'Project details',
-        response:
-          'AI Career Coach helps people define goals, practice interviews, and execute a focused plan that actually moves careers forward.',
-      },
-      {
-        label: 'Tech stack',
-        response:
-          'My stack is pragmatic: JavaScript, strong API design, and deployment workflows built for stability.',
-      },
-      {
-        label: 'Upcoming ideas',
-        response:
-          'Next: a smart portfolio assistant and a productivity co-pilot built for students, creators, and teams.',
-      },
-    ],
-  },
+const sectionMessages = {
+  contact: ["Hey, I'm Amir. You can reach me at: your@email.com"],
+  about: [
+    "I'm an IT engineering student building real-world AI systems and products.",
+  ],
+  projects: ['Project 1: AI Career Coach', 'More projects coming soon...'],
 };
 
 let activeTimers = [];
@@ -78,75 +20,6 @@ let activeTimers = [];
 const clearTimers = () => {
   activeTimers.forEach((timerId) => clearTimeout(timerId));
   activeTimers = [];
-};
-
-const clearSuggestionChips = () => {
-  const chipRows = chatThread.querySelectorAll('.chip-row');
-  chipRows.forEach((row) => row.remove());
-};
-
-const animateInputText = (textValue, onComplete) => {
-  clearTimers();
-  fakeInput.value = '';
-
-  let i = 0;
-  const typeNext = () => {
-    if (i < textValue.length) {
-      fakeInput.value += textValue[i];
-      i += 1;
-      const timerId = setTimeout(typeNext, 22);
-      activeTimers.push(timerId);
-      return;
-    }
-
-    const pauseTimer = setTimeout(() => {
-      fakeInput.value = '';
-      onComplete();
-    }, 320);
-
-    activeTimers.push(pauseTimer);
-  };
-
-  typeNext();
-};
-
-const welcomeActions = [
-  { label: 'View my projects', section: 'projects' },
-  { label: 'Know about me', section: 'about' },
-  { label: 'Hire me', section: 'contact' },
-];
-
-const renderWelcomeScreen = () => {
-  clearTimers();
-  fakeInput.value = '';
-  chatThread.innerHTML = '';
-
-  const welcome = document.createElement('div');
-  welcome.className = 'welcome-screen';
-
-  const heading = document.createElement('h3');
-  heading.className = 'welcome-title';
-  heading.textContent = 'How can I help you?';
-
-  const actions = document.createElement('div');
-  actions.className = 'welcome-actions';
-
-  welcomeActions.forEach((action) => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'suggestion-chip welcome-chip';
-    button.textContent = action.label;
-    button.addEventListener('click', () => {
-      animateInputText(action.label, () => {
-        setActiveSection(action.section);
-      });
-    });
-    actions.appendChild(button);
-  });
-
-  welcome.appendChild(heading);
-  welcome.appendChild(actions);
-  chatThread.appendChild(welcome);
 };
 
 const createMessageBubble = (text, options = {}) => {
@@ -164,7 +37,7 @@ const createMessageBubble = (text, options = {}) => {
     bubble.textContent = text;
   } else {
     bubble.className = 'message typing';
-    bubble.innerHTML = '<span class="typing-dots"><span></span><span></span><span></span></span>';
+    bubble.textContent = '•••';
   }
 
   row.appendChild(bubble);
@@ -183,45 +56,12 @@ const createMessageBubble = (text, options = {}) => {
   }
 };
 
-const createSuggestionChips = (sectionId) => {
-  clearSuggestionChips();
-
-  const section = sectionData[sectionId];
-  if (!section?.options?.length) {
-    return;
-  }
-
-  const row = document.createElement('div');
-  row.className = 'chip-row';
-
-  section.options.forEach((option) => {
-    const chip = document.createElement('button');
-    chip.type = 'button';
-    chip.className = 'suggestion-chip';
-    chip.textContent = option.label;
-
-    chip.addEventListener('click', () => {
-      animateInputText(option.label, () => {
-        createMessageBubble(option.response);
-      });
-    });
-
-    row.appendChild(chip);
-  });
-
-  chatThread.appendChild(row);
-  chatThread.scrollTop = chatThread.scrollHeight;
-
-  requestAnimationFrame(() => row.classList.add('show'));
-};
-
 const renderSectionMessages = (sectionId, options = {}) => {
   const { initialLoad = false } = options;
   clearTimers();
-  fakeInput.value = '';
   chatThread.innerHTML = '';
 
-  const messages = sectionData[sectionId]?.messages || [];
+  const messages = sectionMessages[sectionId] || [];
 
   if (initialLoad && messages[0]) {
     createMessageBubble(messages[0], { immediate: true, firstLoad: true });
@@ -234,9 +74,6 @@ const renderSectionMessages = (sectionId, options = {}) => {
       activeTimers.push(timerId);
     });
 
-    const chipsTimer = setTimeout(() => createSuggestionChips(sectionId), 620);
-
-    activeTimers.push(chipsTimer);
     return;
   }
 
@@ -247,10 +84,6 @@ const renderSectionMessages = (sectionId, options = {}) => {
 
     activeTimers.push(timerId);
   });
-
-  const chipsTimer = setTimeout(() => createSuggestionChips(sectionId), 760);
-
-  activeTimers.push(chipsTimer);
 };
 
 const switchSectionWithTransition = (sectionId) => {
@@ -318,9 +151,10 @@ window.addEventListener('resize', () => {
 });
 
 navItems.forEach((item) => {
-  item.classList.remove('active');
-  item.setAttribute('aria-current', 'false');
+  const isContact = item.dataset.section === 'contact';
+  item.classList.toggle('active', isContact);
+  item.setAttribute('aria-current', isContact ? 'page' : 'false');
 });
 
-title.textContent = 'Welcome';
-renderWelcomeScreen();
+title.textContent = 'Contact';
+renderSectionMessages('contact', { initialLoad: true });
