@@ -315,7 +315,7 @@ const projectCatalog = [
       "An end-to-end ML system predicting irrigation needs in arid climates using climate data. Focused on sustainability, water security, and AI-driven agriculture.",
     stack: "Python • ML • Data Processing",
     link: "https://github.com/amir-dev-flux/aqua-intel",
-    image: "/assets/images/aqua-intel.png",
+    image: "./assets/images/aqua-intel.png",
   },
   {
     title: "AI Career Coach",
@@ -323,7 +323,7 @@ const projectCatalog = [
       "Generates structured career plans based on user input. Built to simplify decision-making for non-technical users.",
     stack: "Flask • AI APIs • Backend",
     link: "https://ai-career-coach-zh2w.onrender.com",
-    image: "/assets/images/ai-career-coach.png",
+    image: "./assets/images/ai-career-coach.png",
   },
   {
     title: "Heat Wave Prediction System",
@@ -331,7 +331,7 @@ const projectCatalog = [
       "A Streamlit-based app forecasting temperature trends and visualizing weather conditions across Indian cities, evolving towards heatwave prediction.",
     stack: "Streamlit • Plotly • Python",
     link: "https://github.com/amir-dev-flux/heat-wave-prediction-system",
-    image: "/assets/images/heat-wave-prediction.png",
+    image: "./assets/images/heat-wave-prediction.png",
   },
   {
     title: "Personal Expense Analyzer",
@@ -339,7 +339,7 @@ const projectCatalog = [
       "Analyzes financial statements, categorizes transactions, and generates insights using Python and FastAPI.",
     stack: "FastAPI • Python • Data Processing",
     link: "https://github.com/amir-dev-flux/personal-expense-analyzer",
-    image: "/assets/images/expense-analyzer.png",
+    image: "./assets/images/expense-analyzer.png",
   },
   {
     title: "Stealth Build 01",
