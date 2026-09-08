@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 110" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="brand-signature-icon" aria-hidden="true">
+  <!-- Sweeping signature outer loop -->
+  <path d="M 32 82 C 14 72, 8 38, 22 22 C 34 8, 62 10, 72 26 C 80 40, 76 60, 58 72 C 46 80, 40 88, 48 92 C 56 94, 64 84, 58 74" />
+  
+  <!-- Sharp 'A' apex and legs -->
+  <path d="M 58 74 L 64 22 L 76 70" />
+  <path d="M 60 52 L 73 49" />
+  
+  <!-- Dynamic signature diagonal slash -->
+  <path d="M 18 86 L 108 34" />
+</svg>
