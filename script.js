@@ -28,9 +28,10 @@ const sectionData = {
       {
         label: 'View categorized stack',
         response: `• Languages: Python, SQL, JavaScript, HTML, CSS
-• Software Engineering: FastAPI, REST APIs, PostgreSQL, Redis, Git, Linux, Docker
-• AI / ML: Machine Learning, scikit-learn, PyTorch, Transformers, LLMs, RAG, Model Training & Evaluation
-• Cloud: AWS, CI/CD, Application Deployment
+• Backend & Frameworks: FastAPI, Flask, REST APIs, Pydantic, Streamlit
+• Databases: PostgreSQL, Redis, SQLAlchemy
+• AI / ML: Machine Learning, scikit-learn, pandas, PyTorch, Transformers, LLMs, RAG
+• DevOps & Cloud: Docker, AWS, Git, Linux, CI/CD
 • Enterprise: Adobe Experience Manager (AEM), Website Management, Agile / Scrum`,
       },
       {
@@ -106,9 +107,10 @@ A.P. Shah Institute of Technology, Mumbai University | 2024`,
       {
         label: 'Technical skills summary',
         response: `• Languages: Python, SQL, JavaScript, HTML, CSS
-• Software Engineering: FastAPI, REST APIs, PostgreSQL, Redis, Git, Linux, Docker
-• AI / ML: Machine Learning, scikit-learn, PyTorch, Transformers, LLMs, RAG, Model Training & Evaluation
-• Cloud: AWS, CI/CD, Application Deployment
+• Backend & Frameworks: FastAPI, Flask, REST APIs, Pydantic, Streamlit
+• Databases: PostgreSQL, Redis, SQLAlchemy
+• AI / ML: Machine Learning, scikit-learn, pandas, PyTorch, Transformers, LLMs, RAG
+• DevOps & Cloud: Docker, AWS, Git, Linux, CI/CD
 • Enterprise: Adobe Experience Manager (AEM), Website Management, Agile / Scrum`,
       },
     ],
